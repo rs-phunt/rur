@@ -7,8 +7,4 @@ require "rur/produce"
 
 module Rur
   require 'railtie' if defined?(Rails)
-
-  def self.hl
-    p 'hello'
-  end
 end

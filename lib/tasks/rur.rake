@@ -3,11 +3,6 @@ require "rur/thor_ultils"
 
 namespace :rur do
   desc "Rur produces app"
-  task test: :environment do |t, args|
-    binding.pry
-  end
-
-  desc "Rur produces app"
   task :produce, [:route] => :environment do |t, args|
     # routes = Rur::Produce.parse_routes(ARGV.drop(1))
 
