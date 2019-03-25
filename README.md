@@ -25,6 +25,17 @@ Or install it yourself as:
 
     $ gem install rur
 
+And then add `require 'rur'` into `config/application.rb`:
+
+```ruby
+# config/application.rb
+...
+require 'rails/all'
+
+require 'rur'
+...
+```
+
 ## Usage
 
 ### 1. Init `Rur`
@@ -50,9 +61,13 @@ append    .gitignore
 
       $ rake rur:produce
 
-  2.1 For specify folder(r) you want
+  2.2 For specify folder(r) you want
 
       $ rake rur:produce controllers models views lib
+
+### 3. View results:
+
+  Go to [http://localhost:3000/rur](http://localhost:3000/rur) to see your results.
 
 ## Testing
   TODO
