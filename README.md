@@ -1,9 +1,9 @@
-# Rur - Rubocop reports
+# Rur - Rubocop reports by HTML
 
-Rur gem will produce Rubocop results by `html` format.
+Rur gem will produce Rubocop results by `HTML` format.
 It uses
-- [Rubocop gem](https://github.com/rubocop-hq/rubocop) to outputs `html` format.
-- [High_voltage](https://github.com/thoughtbot/high_voltage) to links `html` result in your app (`static page`)
+- [Rubocop](https://github.com/rubocop-hq/rubocop) gem exports `HTML` format.
+- [High_voltage](https://github.com/thoughtbot/high_voltage) gem links `HTML` results in your app (`static pages`)
 
 ## Installation
 
@@ -25,17 +25,6 @@ Or install it yourself as:
 
     $ gem install rur
 
-And then add `require 'rur'` into `config/application.rb`:
-
-```ruby
-# config/application.rb
-...
-require 'rails/all'
-
-require 'rur'
-...
-```
-
 ## Usage
 
 ### 1. Init `Rur`
@@ -46,13 +35,10 @@ require 'rur'
 ```bash
 $ rails g rur
 
-create    config/initializers/high_voltage.rb
-create    app/views/rur/home.html.erb
- route    scope :rur do
-            # Rur for all folders
-            get '/' => 'high_voltage/pages#show', id: 'home'
-            end
-append    .gitignore
+create  config/initializers/high_voltage.rb
+create  app/views/rur/home.html.erb
+insert  config/routes.rb
+append  .gitignore
 ```
 
 ### 2. Produce views
@@ -61,16 +47,16 @@ append    .gitignore
 
       $ rake rur:produce
 
-  2.2 For specify folder(r) you want
+  2.2 For specify folder(s) you want
 
       $ rake rur:produce controllers models views lib
 
 ### 3. View results:
 
-  Go to [http://localhost:3000/rur](http://localhost:3000/rur) to see your results.
+  Go to [http://localhost:3000/rur](http://localhost:3000/rur) to see results.
 
 ## Testing
-  TODO
+*TODO*
 
 ## Contributing
 

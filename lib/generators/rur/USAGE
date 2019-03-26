@@ -7,16 +7,13 @@ Example:
     1) This will create:
         create  config/initializers/high_voltage.rb
         create  app/views/rur/home.html.erb
-         route  scope :rur do
-                  # Rur for all folders
-                  get '/' => 'high_voltage/pages#show', id: 'home'
-                end
+        insert  config/routes.rb
         append  .gitignore
 
     2) Produces Rubocop reports
         2.1 For your app
             rake rur:produce
 
-        2.1 For specify folder(r) you want
+        2.2 For specify folder(s) you want
             rake rur:produce controllers models views lib
 
