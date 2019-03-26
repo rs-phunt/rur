@@ -1,27 +1,15 @@
 include Rur::Produce
-require "rur/thor_ultils"
 
 namespace :rur do
   desc "Rur produces app"
-  task :produce, [:route] => :environment do |t, args|
-    # routes = Rur::Produce.parse_routes(ARGV.drop(1))
+  task produce: :environment do
+    targets = ARGV.drop(1)
 
-    routes = ARGV.drop(1)
+    Rur::Produce.r_produce() and return if targets.blank?
 
-    if routes.blank?
-      p "Rur is producing your app:[#{Rails.root}/]"
-      Rur::Produce.r_produce('.')
-      p "Rur produced your app:\[#{Rails.root}\/\]\n"
-    else
-      # dynamically writing tasks on the fly
-      routes.each { |a| task a.to_sym do ; end }
+    # dynamically writing tasks on the fly
+    targets.each { |target| task target.to_sym do ; end }
 
-      routes.each do |route|
-        p "Rur is producing #{route}..."
-        Rur::Produce.r_produce(route)
-        Rur::ThorUltils.new.prepend_rur_route(route)
-        p "Rur produced #{route}!\n"
-      end
-    end
+    targets.each { |target| puts Rur::Produce.r_produce(target) }
   end
 end
