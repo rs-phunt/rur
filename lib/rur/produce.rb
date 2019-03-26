@@ -21,7 +21,7 @@ module Rur
           'db'
         when '.'
           target = 'home'
-          'lib'
+          ''
         else
           target
         end
