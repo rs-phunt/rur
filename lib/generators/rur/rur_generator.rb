@@ -3,16 +3,18 @@ class RurGenerator < Rails::Generators::Base
 
   def copy_rur_file
     copy_file "high_voltage.rb", "config/initializers/high_voltage.rb"
-    copy_file "home.html.erb", "app/views/rur/home.html.erb"
+    copy_file "home.html.erb",   "app/views/rur/home.html.erb"
   end
 
   def add_rur_routes
-    rur_route =  "  scope :rur do\n"
-    rur_route += "    \# Rur for all folders\n"
-    rur_route += "    get '/' => 'high_voltage/pages#show', id: 'home'\n"
-    rur_route += "  end\n"
-
-    route(rur_route)
+    rur_route =
+"""
+  scope :rur do
+    # Rur for all folders
+    get '/' => 'high_voltage/pages#show', id: 'home'
+  end
+"""
+    inject_into_file "config/routes.rb", rur_route, after: /Rails\.application\.routes\.draw do/
   end
 
   def append_rur_gitignore
