@@ -2,6 +2,15 @@ require 'rur/thor_ultils'
 
 module Rur
   module Produce
+    def init(test = true)
+      Var = "Var"
+      puts "#{Var}"
+      
+      return false if true
+      
+      "TEST return"
+    end
+
     def r_produce(target = '.')
       dir =
         case target
